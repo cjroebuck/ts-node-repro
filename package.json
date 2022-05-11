@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@cspotcode/multiloader": "^0.0.1",
+    "esmock":"1.7.5",
+    "@swc/core": "1.2.181",
+    "cross-env": "7.0.3",
+    "jest": "28.1.0",
+    "jest-light-runner": "0.2.1",
+    "ts-node": "10.7.0",
+    "typescript": "4.6.4",
+    "@types/jest":"27.5.0"
+  },
+  "jest": {
+    "runner": "jest-light-runner",
+    "transform": {},
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ]
+  },
+  "scripts": {
+    "test": "NODE_OPTIONS='--experimental-specifier-resolution=node --loader @cspotcode/multiloader/compose?esmock,ts-node/esm' node --loader=esmock node_modules/.bin/jest --watch --runInBand --testPathPattern __tests__/*",
+    "test:working": "NODE_OPTIONS='--experimental-specifier-resolution=node --loader @cspotcode/multiloader/compose?esmock,ts-node/esm' node --loader=esmock node_modules/.bin/jest --watch --testPathPattern __tests__/*"
+  }
+}
